@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
     root to: redirect('/admin/shops')
   end
+  
+  resources :shops, only: [:index, :show], param: :slug
+  root to: 'shops#index'
 end

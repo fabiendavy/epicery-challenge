@@ -1,0 +1,44 @@
+<div class="card-shop" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?<%= @shop.taxons.first ? @shop.taxons.first.name : "vegetable" %>)">
+  <%= @shop.name %>
+</div>
+
+<% if @products.count > 0 %>
+  <div class="wrapper">
+    <div class="categories">
+      <% @shop.taxons.each do |taxon| %>
+        <% if taxon.products.where(shop: @shop).count > 0 %>
+          <div class="categories-item">
+            <%= taxon.name %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="products">
+      
+      <% @shop.taxons.each do |taxon| %>
+        <% if taxon.products.where(shop: @shop).count > 0 %>
+          <h2><%= taxon.name %></h2>
+          <div class="products-item">
+            
+            <% @products.each do |product| %>
+              <% if product.taxons.include?(taxon) %>
+                <div class="products-item-details">
+                  <img src="https://source.unsplash.com/featured/?<%= taxon.name %>" />
+                  <div class="products-item-infos">
+                    <h2><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                    <p><%= product.price %> €</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+<% else %>
+  <h1 style="text-align: center; margin-top: 50px;">Sorry this shop doesn't have any products yet.</h1>
+<% end %>
