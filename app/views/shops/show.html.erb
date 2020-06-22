@@ -24,7 +24,7 @@
 
           <!-- if yes, we display a card of the product -->
           <div class="products-item">
-            <% @products.each do |product| %>
+            <% @products.first(5).each do |product| %>
               <%= render partial: "shops/product_card", locals: { product: product, taxon: taxon } %>
             <% end %>
           </div>

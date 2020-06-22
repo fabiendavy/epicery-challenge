@@ -14,13 +14,10 @@
 
 .wrapper {
   display: flex;
+  margin-bottom: 50px;
   .categories {
     width: 20vw;
-    height: calc(100vh - 373px);
-    background-color: #e4e4e4;
-    overflow-y: scroll;
-    overflow: hidden;
-    border: 1px solid rgb(85, 85, 85);
+    border-right: 1px solid rgb(85, 85, 85);
     .categories-item {
       border-bottom: 1px solid rgb(85, 85, 85);
       padding: 16px 32px;
