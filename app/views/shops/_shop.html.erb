@@ -1,0 +1,13 @@
+<div class="card">
+  <img src="https://source.unsplash.com/featured/?<%= shop.taxons.first ? shop.taxons.first.name : "vegetable" %>" />
+  <div class="card-infos">
+    <div>
+      <h2><%= shop.name %></h2>
+      <p class="taxons">
+        <% shop.taxons.each do |taxon| %>
+          <span><%= taxon.name %></span>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

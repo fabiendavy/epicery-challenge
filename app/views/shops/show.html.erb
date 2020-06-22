@@ -2,11 +2,13 @@
   <%= @shop.name %>
 </div>
 
-<% if @products.count > 0 %>
+<% if @products.any? %>
   <div class="wrapper">
+    <!-- we display a list of the available categories -->
     <div class="categories">
       <% @shop.taxons.each do |taxon| %>
-        <% if taxon.products.where(shop: @shop).count > 0 %>
+        <!-- we display only the ones which aren't empty -->
+        <% if taxon.products.where(shop: @shop).any? %>
           <div class="categories-item">
             <%= taxon.name %>
           </div>
@@ -15,30 +17,22 @@
     </div>
 
     <div class="products">
-      
       <% @shop.taxons.each do |taxon| %>
-        <% if taxon.products.where(shop: @shop).count > 0 %>
+        <!-- we check if the categories have a product as above -->
+        <% if taxon.products.where(shop: @shop).any? %>
           <h2><%= taxon.name %></h2>
+
+          <!-- if yes, we display a card of the product -->
           <div class="products-item">
-            
             <% @products.each do |product| %>
-              <% if product.taxons.include?(taxon) %>
-                <div class="products-item-details">
-                  <img src="https://source.unsplash.com/featured/?<%= taxon.name %>" />
-                  <div class="products-item-infos">
-                    <h2><%= product.name %></h2>
-                    <p><%= product.description %></p>
-                    <p><%= product.price %> €</p>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "shops/product_card", locals: { product: product, taxon: taxon } %>
             <% end %>
           </div>
         <% end %>
       <% end %>
-
     </div>
   </div>
+
 <% else %>
   <h1 style="text-align: center; margin-top: 50px;">Sorry this shop doesn't have any products yet.</h1>
 <% end %>

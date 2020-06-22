@@ -10,14 +10,7 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to "All shops", shops_path, class: 'all' %>
-      <ul class='list' >
-        <% @categories.each do |categorie| %>
-          <li><%= link_to categorie.name, shops_path(category: categorie.name) %></li>
-        <% end %>
-      </ul>
-    </header>
+    <%= render "layouts/nav"  %>
     <%= yield %>
   </body>
 </html>
