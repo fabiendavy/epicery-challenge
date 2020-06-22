@@ -26,7 +26,8 @@ puts "Created 6 taxons"
 5.times do
   shop = Shop.new(name: Faker::Restaurant.name, available_on: DateTime.now)
   shop.slug = shop.name.downcase.split(' ').join('-')
-  shop.taxon_ids << taxon_ids.sample
+  shop.taxon_ids << taxon_ids.sample(3)
+  shop.taxon_ids = shop.taxon_ids.first
   shop.save
   shop_ids << shop.id
 end
@@ -35,7 +36,8 @@ puts "Created 5 available shops"
 5.times do
   shop = Shop.new(name: Faker::Restaurant.name, available_on: DateTime.now + 5)
   shop.slug = shop.name.downcase.split(' ').join('-')
-  shop.taxon_ids << taxon_ids.sample
+  shop.taxon_ids << taxon_ids.sample(3)
+  shop.taxon_ids = shop.taxon_ids.first
   shop.save
   shop_ids << shop.id
 end
