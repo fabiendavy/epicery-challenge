@@ -1,0 +1,19 @@
+<h1><%= @taxon.name %></h1>
+
+<h3>Shops</h3>
+<ul>
+  <% @taxon.shops.each do |shop| -%>
+    <%= tag.li link_to(shop.name, [:admin, shop]) %>
+  <% end -%>
+</ul>
+
+
+<h3>Products</h3>
+<ul>
+  <% @taxon.products.each do |product| -%>
+    <%= tag.li link_to(product.name, [:admin, product]) %>
+  <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_admin_taxon_path(@taxon) %> |
+<%= link_to 'Back', admin_taxons_path %>

@@ -1,0 +1,35 @@
+<h1>Shops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Available to users</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.name %></td>
+        <td><%= shop.slug %></td>
+        <td class="center">
+          <% if shop.available_on && shop.available_on < Time.zone.now -%>
+            ✅
+          <% else -%>
+            ❌
+          <% end -%>
+        </td>
+        <td><%= link_to 'Show', [:admin, shop] %></td>
+        <td><%= link_to 'Edit', edit_admin_shop_path(shop) %></td>
+        <td><%= link_to 'Destroy', [:admin, shop], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop', new_admin_shop_path %>

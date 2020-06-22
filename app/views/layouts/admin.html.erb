@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestTechnique - Back Office</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav id="menu">
+      <ul>
+        <li><%= link_to 'Shops',    admin_shops_path %></li>
+        <li><%= link_to 'Products', admin_products_path %></li>
+        <li><%= link_to 'Taxons',   admin_taxons_path %></li>
+      </ul>
+    </nav>
+    <div id="content">
+      <p id="notice"><%= notice %></p>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
