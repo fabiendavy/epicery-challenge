@@ -18,13 +18,13 @@
 
     <div class="products">
       <% @shop.taxons.each do |taxon| %>
-        <!-- we check if the categories have a product as above -->
+        <!-- we check if the shops' categories have a product as above -->
         <% if taxon.products.where(shop: @shop).any? %>
           <h2><%= taxon.name %></h2>
           <!-- if yes, we display a card of the product -->
           <div class="products-item">
             <% @products.each do |product| %>
-            <!-- with only the right product for the right taxon -->
+              <!-- with only the right product for the right taxon -->
               <% if product.taxons.include?(taxon) %>
                 <%= render partial: "shops/product_card", locals: { product: product, taxon: taxon } %>
               <% end %>
