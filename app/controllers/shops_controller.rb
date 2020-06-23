@@ -14,7 +14,7 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @products = Product.where(shop: @shop)
+    @products = @shop.products
   end
 
   private

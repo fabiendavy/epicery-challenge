@@ -14,7 +14,7 @@
 
 .wrapper {
   display: flex;
-  margin-bottom: 50px;
+  min-height: calc(100vh - 373px);
   .categories {
     width: 20vw;
     border-right: 1px solid rgb(85, 85, 85);
@@ -30,7 +30,7 @@
     .products-item {
       display: flex;
       .products-item-details {
-        margin: 0 10px;
+        margin: 0 10px 50px 10px;
         overflow: hidden;
         background: white;
         width: 300px;
