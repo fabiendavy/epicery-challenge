@@ -29,3 +29,11 @@ Pour ce test, coté site web, il faut créer le site public :
 
 ### N.B.
 L'idée n'est pas de passer 3 jours à faire ce test mais quelques heures. Ceci étant dit, libre à toi d'y passer plus ou moins de temps en fonction de ce que tu veux finir ou faire en plus !
+
+# LANCER L'APP AVEC :
+```
+rails db:migrate db:seed
+bundle
+yarn
+rails s
+```
